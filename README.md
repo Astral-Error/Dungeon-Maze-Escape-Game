@@ -1,6 +1,5 @@
 # Dungeon-Maze-Escape-Game
-A dungeon maze escape game that I created for the fullfillment of a project in my first year of Engineering.
-(This was made as an assignment project in my University (VIT). **VIT Registration Number: 24BCE0995**)
+This was made as an assignment project in my University (VIT). **VIT Registration Number: 24BCE0995**
 
 # Explanation
 The following program is a dungeon escape game designed entirely in python.

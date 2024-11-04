@@ -87,7 +87,7 @@ def update_maze(row,column,row_n,column_n):
 def maze_generation():
     #Generates the random values for the maze
     global row_col
-    row_col = random.randint(random.randint(30,40),random.randint(40,50))
+    row_col = random.randint(random.randint(50,60),random.randint(60,70))
     global entry_column
     entry_column = random.randint(1,row_col-3) #A gap of two is left to avoid conflict with column ends
     exit_column = random.randint(0,row_col-1) 
@@ -136,35 +136,10 @@ def maze_config():
     row,column=len(maze),len(maze[0])
     for i in range(1,row-1):
         #Randomly generates the number of blanks to add in each row
-        no_of_blanks = random.randint(row-row//15,column-2)
+        no_of_blanks = random.randint(row-row//5,column-2)
         for j in range(no_of_blanks):
             maze[i][random.randint(1,column-2)]=" "
     return maze
-
-
-maze = maze_generation() #Generates the maze with the path
-exit_pos = [len(maze)-1,maze[len(maze)-1].index(" ")]
-maze = maze_config() #Configures the entire maze with random pathways
-#display_maze()
-flag_firstMove = True
-
-
-cell_size = 20
-grid_width, grid_height = row_col,row_col
-screen_width, screen_height = grid_width * cell_size, grid_height*cell_size
-
-white = (223, 223, 223)
-black = (33, 39, 23)
-player_color = (41,128,185)
-enemy_color = (255, 0, 0)
-exit_color = (247, 202, 121)
-wall_color = (56, 56, 56)
-player_pos = position("P")
-
-#Screen setup
-screen = pygame.display.set_mode((screen_width, screen_height))
-pygame.display.set_caption("Dungeon Maze Escape")
-clock = pygame.time.Clock()
 
 def draw_maze():
     for row in range(grid_height):
@@ -182,6 +157,30 @@ def draw_maze():
                 screen, color,
                 pygame.Rect(col*cell_size, row*cell_size, cell_size, cell_size)
             )
+
+
+maze = maze_generation() #Generates the maze with the path
+exit_pos = [len(maze)-1,maze[len(maze)-1].index(" ")]
+maze = maze_config() #Configures the entire maze with random pathways
+#display_maze()
+flag_firstMove = True
+    
+cell_size = 13
+grid_width, grid_height = row_col,row_col
+screen_width, screen_height = grid_width * cell_size, grid_height*cell_size
+
+white = (223, 223, 223)
+black = (33, 39, 23)
+player_color = (41,128,185)
+enemy_color = (255, 0, 0)
+exit_color = (247, 202, 121)
+wall_color = (56, 56, 56)
+player_pos = position("P")
+
+#Screen setup
+screen = pygame.display.set_mode((screen_width, screen_height))
+pygame.display.set_caption("Dungeon Maze Escape")
+clock = pygame.time.Clock()
 
 pgi.alert("• The blue mark in the top row indicates the player position\n\
 • The yellow mark at the bottom most row indicates the exit\n\
